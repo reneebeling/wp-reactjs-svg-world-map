@@ -1,0 +1,53 @@
+{
+  "name": "wp-reactjs-svg-world-map ",
+  "version": "0.1.0",
+  "description": "Simple Wordpress plugin to show a interactive svg world map based on React.",
+  "main": "dev-react-svg-world-map.js",
+  "dependencies": {
+    "react-visibility-sensor": "^5.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.1.0",
+    "bable-loader": "^0.0.1-security",
+    "css-loader": "^3.5.3",
+    "html-webpack-plugin": "^4.3.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.14.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-svg-map": "^2.1.0",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
+    "terser-webpack-plugin": "^3.0.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^4.2.2"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reneebeling/wp-reactjs-svg-world-map.git"
+  },
+  "keywords": [
+    "wordpress",
+    "ReactJs",
+    "Plugin",
+    "Worldmap",
+    "React-SVG-Map"
+  ],
+  "author": "Rene Ebeling",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/reneebeling/wp-reactjs-svg-world-map/issues"
+  },
+  "homepage": "https://github.com/reneebeling/wp-reactjs-svg-world-map#readme"
+}

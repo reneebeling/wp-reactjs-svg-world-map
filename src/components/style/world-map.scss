@@ -1,0 +1,42 @@
+/* svg-map__location */
+.svg-map__location {
+	&:focus {
+		fill: #8e8e8e;
+	}
+	&:hover {
+		fill: #8e8e8e;
+	}
+	fill: #dadada;
+	cursor: pointer;
+	stroke: white;
+}
+
+.active-map-link{
+    fill: #f6b4de;
+    &:hover {
+		fill: #c52a8d;
+	}
+}
+
+.vizSensorDiv {
+    background-color: red;
+    height: 20px;
+}
+
+/* world maps tooltip */
+.world {
+	text-align: center;
+		&_map {
+			display: inline-block;
+			&_tooltip {
+                position: fixed;
+                width: auto;
+                padding: 0px 10px 0px 10px;
+                border: 1px solid darkgray;
+                background-color: white;
+                font-size: 12px;
+                max-width: 300px;
+                border-radius: 5px;
+			}
+		}
+	}
