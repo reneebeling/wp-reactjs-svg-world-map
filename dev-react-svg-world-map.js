@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import WorldLinkMap from './src/components/world-link-map.jsx';
+import WorldLinkMapLazyLoad from './src/components/world-link-lazy-load.jsx';
 
 if (process.env.NODE_ENV !== 'production') {
    console.log('Development mode is activated.');
@@ -10,4 +10,7 @@ if (process.env.NODE_ENV !== 'production') {
    );
 }
 
-ReactDOM.render(<WorldLinkMap />, document.getElementById('reactjs_svg_map'));
+if ( document.getElementById('reactjs_svg_map') ) {
+    ReactDOM.render(<WorldLinkMapLazyLoad />, document.getElementById('reactjs_svg_map'));
+    window.onbeforeunload = function () {window.scrollTo(0, 0);}
+}
