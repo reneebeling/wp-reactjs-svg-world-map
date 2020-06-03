@@ -1,12 +1,14 @@
 // var webpack = require("webpack");
 const TerserPlugin = require('terser-webpack-plugin');
 const path = require('path');
+//const LoadablePlugin = require('@loadable/webpack-plugin');
 
 module.exports = {
 	entry: "./dev-react-svg-world-map.js",
 	output: {
         path: path.resolve(__dirname, 'dist'),
-		filename: "react-svg-world-map.js"
+		filename: "react-svg-world-map.js",
+        publicPath: "/wp-content/plugins/wp_LJ_CreatePagesByCategories/assets/js/"
 	},
     optimization: {
         minimize: true,

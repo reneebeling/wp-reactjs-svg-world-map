@@ -5,8 +5,9 @@ import VizSensor from "react-visibility-sensor";
 import { getLocationId, getLocationName } from '../utils';
 import '../../node_modules/react-svg-map/src/svg-map.scss';
 import './style/world-map.scss';
+import { lazyload } from 'react-lazyload'
 
-class WorldLinkMap extends React.Component {
+export default class WorldLinkMap extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -17,7 +18,8 @@ class WorldLinkMap extends React.Component {
 			},
             defaultfilter : "en",
             VizSensorActive: true,
-            links : {}
+            links : {},
+            moveMap: ""
 		};
 
 		this.handleLocationMouseOver = this.handleLocationMouseOver.bind(this);
@@ -29,8 +31,6 @@ class WorldLinkMap extends React.Component {
 	}
 
 	handleLocationMouseOver(event) {
-		// const pointedLocation = getLocationName(event);
-        // this.setState({ pointedLocation });
         const clickedLocationId = getLocationId(event);
         if( typeof(this.state.links[clickedLocationId]) !== "undefined"){
             const pointedLocation = this.state.links[clickedLocationId].name;
@@ -70,8 +70,13 @@ class WorldLinkMap extends React.Component {
     
     
     GetCountryLinksAndNames(isVisible) {
-        console.log("VizSensor active: " + this.state.VizSensorActive)
+        if (process.env.NODE_ENV !== 'production') {
+            console.log("VizSensor active: " + this.state.VizSensorActive)
+        }
         if(isVisible){
+            this.setState(prevState => {
+                return {moveMap: prevState.moveMap !== "inactive" ? prevState.moveMap + "inactive" : prevState.moveMap}
+            });
             console.log('SVG MAP is now %s get country links and names from Wordpress', isVisible ? 'visible' : 'hidden');
             // in  case, someone wants to change the language => to do: two starting chars of lang as filter 
             if(typeof(document.documentElement.lang) !== "undefined" && document.documentElement.lang.startsWith("de")){
@@ -80,7 +85,9 @@ class WorldLinkMap extends React.Component {
             fetch("/wp-json/react-svg-map/data/v1/country-names-and-links?filter=" + this.state.defaultfilter)
             .then(response => response.json())
             .then(countryJSON => {
-                console.log(countryJSON);
+                if (process.env.NODE_ENV !== 'production') {
+                    console.log(countryJSON);
+                }
                 this.setState({links: countryJSON});
                 this.setState({VizSensorActive: false});
             });
@@ -93,25 +100,25 @@ class WorldLinkMap extends React.Component {
                 active={this.state.VizSensorActive}
                 onChange={this.GetCountryLinksAndNames}
                 partialVisibility = {true}
-                offset={{ top: 200 }}
+                offset={{top: 500}}
             >
-                <div id="svg-map-frame">
-                    <SVGMap
-                        map={World}
-                        type="link"
-                        onLocationMouseOver={this.handleLocationMouseOver}
-                        onLocationMouseOut={this.handleLocationMouseOut} 
-                        onLocationMouseMove={this.handleLocationMouseMove}
-                        onLocationClick={this.handleLocationClick} 
-                        locationClassName={this.getLocationClassName} 
-                        />
-                        <div className="world_map_tooltip" style={this.state.tooltipStyle}>
-                                {this.state.pointedLocation}
-                        </div>
+                <div id="svg-map-frame" className={this.state.moveMap} >
+                    <div id="svg-map-frame-opacity-background" className={this.state.moveMap} >                            
+                        <SVGMap
+                            map={World}
+                            type="link"
+                            onLocationMouseOver={this.handleLocationMouseOver}
+                            onLocationMouseOut={this.handleLocationMouseOut} 
+                            onLocationMouseMove={this.handleLocationMouseMove}
+                            onLocationClick={this.handleLocationClick} 
+                            locationClassName={this.getLocationClassName} 
+                            />
+                            <div className="world_map_tooltip" style={this.state.tooltipStyle}>
+                                    {this.state.pointedLocation}
+                            </div>
+                    </div>
                 </div>
             </VizSensor>
 		);
 	}
 }
-
-export default WorldLinkMap;

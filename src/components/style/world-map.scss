@@ -1,21 +1,21 @@
 /* svg-map__location */
 .svg-map__location {
-	&:focus {
-		fill: #8e8e8e;
-	}
-	&:hover {
-		fill: #8e8e8e;
-	}
-	fill: #dadada;
-	cursor: pointer;
-	stroke: white;
+    &:focus {
+        fill: #8e8e8e;
+    }
+    &:hover {
+        fill: #a7a7a7;
+    }
+    fill: #e0dfdfcc;
+    cursor: pointer;
+    stroke: white;
 }
 
 .active-map-link{
-    fill: #f6b4de;
+    fill: #f9cbe8db;
     &:hover {
-		fill: #c52a8d;
-	}
+        fill: #e47cbe9e;
+    }
 }
 
 .vizSensorDiv {
@@ -23,20 +23,44 @@
     height: 20px;
 }
 
+#svg-map-frame.inactive {
+	position: relative;
+	z-index: 2;
+	background: white;
+	transform: translateY(0px);
+	transition: all 1.5s ease-out;
+}
+#svg-map-frame {
+	position: relative;
+	z-index: 2;
+	background: white;
+	transform: translateY(200px);
+}
+
+#svg-map-frame-opacity-background.inactive {
+    opacity: 1;
+    transition: all 1.5s ease-out;
+}
+#svg-map-frame-opacity-background {
+    opacity: .25;
+}
+
 /* world maps tooltip */
 .world {
-	text-align: center;
-		&_map {
-			display: inline-block;
-			&_tooltip {
+    text-align: center;
+        &_map {
+            display: inline-block;
+            &_tooltip {
                 position: fixed;
                 width: auto;
                 padding: 0px 10px 0px 10px;
-                border: 1px solid darkgray;
+                border: 1px solid #676767;
                 background-color: white;
                 font-size: 12px;
                 max-width: 300px;
                 border-radius: 5px;
-			}
-		}
-	}
+                color: #676767;
+                box-shadow: 3px 3px 4px rgba(0 , 0 , 0 , 0.5);
+            }
+        }
+    }
