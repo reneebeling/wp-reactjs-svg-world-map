@@ -7,7 +7,7 @@ module.exports = {
 	output: {
         path: path.resolve(__dirname, './dist'),
 		filename: "react-svg-world-map.js",
-        publicPath: "/wp-content/plugins/wp_LJ_CreatePagesByCategories/assets/js/"
+        publicPath: "/wp-content/plugins/LJ_CPbC/assets/js/"
 	},
     plugins: [new HtmlWebpackPlugin({
                     title: 'SVG World Map ',

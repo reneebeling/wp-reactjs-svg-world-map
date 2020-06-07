@@ -5,7 +5,6 @@ import VizSensor from "react-visibility-sensor";
 import { getLocationId, getLocationName } from '../utils';
 import '../../node_modules/react-svg-map/src/svg-map.scss';
 import './style/world-map.scss';
-import { lazyload } from 'react-lazyload'
 
 export default class WorldLinkMap extends React.Component {
 	constructor(props) {
