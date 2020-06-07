@@ -48,4 +48,3 @@ Starting with wp reactjs plugins:
 This used world map is based on the work of [MapSVG](https://mapsvg.com).
 
 As also stated by [VICTOR CAZANAVE](https://victorcazanave.com/en/), the original map is available [here](https://mapsvg.com/maps/world) under the [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) license.
-# wp-reactjs-svg-world-map
