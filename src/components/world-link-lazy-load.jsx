@@ -12,7 +12,7 @@ export default class WorldLinkMapLazyLoad extends React.Component {
     render() {
         return (
             <div>
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<div id="wave"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>}>
                     <WorldLinkMap />
                 </Suspense>
             </div>
