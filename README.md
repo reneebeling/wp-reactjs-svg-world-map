@@ -25,8 +25,14 @@ npm install -g webpack-cli
 ```
   $ webpack
 ```
-**and that's all!** :+1:  you will have a new directory at the root of your plugin: `dist` which contains the compiled javascript file.
-now you can create your JSX components, and when you're ready, rerun ``` $ webpack```.
+4. Build the bundles:
+```
+  $ npm run build
+```
+5. Try the local dev server:
+```
+  $ npm start
+```
 
 ## Credits
 
